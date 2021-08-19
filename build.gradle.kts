@@ -5,7 +5,7 @@ buildscript {
     }
     dependencies {
         classpath("com.android.tools.build:gradle:4.2.0")
-        classpath(kotlin("gradle-plugin", version = "1.5.10"))
+        classpath(kotlin("gradle-plugin:1.5.10"))
     }
 }
 
@@ -21,5 +21,5 @@ tasks.register("clean", Delete::class) {
 }
 
 tasks.withType<Wrapper> {
-    gradleVersion = "7.2"
+    gradleVersion = "${project.extra["versionGradle"]}"
 }
