@@ -39,6 +39,9 @@ dependencies {
     implementation("com.google.android.material:material:_")
     implementation("androidx.constraintlayout:constraintlayout:_")
 
+    implementation("androidx.navigation:navigation-fragment-ktx:_")
+    implementation("androidx.navigation:navigation-ui-ktx:_")
+
     testImplementation("junit:junit:_")
     androidTestImplementation("androidx.test.ext:junit:_")
     androidTestImplementation("androidx.test.espresso:espresso-core:_")
