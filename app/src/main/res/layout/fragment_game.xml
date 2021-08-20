@@ -1,13 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.GameFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Game Fragment" />
+        android:animateLayoutChanges="true"
+        tools:context=".fragments.GameFragment">
 
-</FrameLayout>
+        <LinearLayout
+            android:id="@+id/layoutCoinSlots"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <include
+                android:id="@+id/coinsSlot1"
+                layout="@layout/layout_coin_slot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:slotNum="@{1}" />
+
+            <include
+                android:id="@+id/coinsSlot2"
+                layout="@layout/layout_coin_slot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:slotNum="@{2}" />
+
+            <include
+                android:id="@+id/coinsSlot3"
+                layout="@layout/layout_coin_slot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:slotNum="@{3}" />
+
+            <include
+                android:id="@+id/coinsSlot4"
+                layout="@layout/layout_coin_slot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:slotNum="@{4}" />
+
+            <include
+                android:id="@+id/coinsSlot5"
+                layout="@layout/layout_coin_slot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:slotNum="@{5}" />
+
+        </LinearLayout>
+
+        <include
+            android:id="@+id/coinsSlot6"
+            layout="@layout/layout_coin_slot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layoutCoinSlots"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:slotNum="@{6}" />
+
+        <TextView
+            android:id="@+id/textCurrentPlayerName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="Hazel"
+            android:textSize="32sp"
+            app:layout_constraintTop_toTopOf="@id/textCurrentPlayerCoinsLeft"
+            app:layout_constraintBottom_toBottomOf="@id/textCoinsLeft"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Alex" />
+
+        <TextView
+            android:id="@+id/textCurrentPlayerCoinsLeft"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="7"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@id/coinsSlot6"
+            app:layout_constraintStart_toStartOf="@id/textCoinsLeft"
+            app:layout_constraintEnd_toEndOf="@id/textCoinsLeft"
+            tools:text="10" />
+
+        <TextView
+            android:id="@+id/textCoinsLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:text="coin(s) left"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/textCurrentPlayerCoinsLeft"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layoutButtons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/textCoinsLeft"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:drawableEnd="@drawable/mdi_dice_6_black_24dp"
+                android:padding="10dp"
+                android:text="@string/roll" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/or"
+                android:textSize="24sp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:drawableEnd="@drawable/mdi_arrow_right_black_24dp"
+                android:padding="10dp"
+                android:text="@string/pass" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textCurrentTurnInfo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:scrollbars="vertical"
+            android:text="This will contain info about the game."
+            app:layout_constraintTop_toBottomOf="@id/layoutButtons"
+            app:layout_constraintBottom_toTopOf="@id/textCurrentStandingsInfo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Alex rolled a 4.\nAlex rolled a 6!" />
+
+        <TextView
+            android:id="@+id/textCurrentStandingsInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="This will contain the game's current standings."
+            app:layout_constraintTop_toBottomOf="@id/textCurrentTurnInfo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Current Scores:\t\nHazel: 4 coins\n\tAlex: 7 coins" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
