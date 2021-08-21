@@ -36,16 +36,24 @@ android {
 }
 
 dependencies {
+    // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib:_")
 
+    // General
     implementation("androidx.core:core-ktx:_")
     implementation("androidx.appcompat:appcompat:_")
     implementation("com.google.android.material:material:_")
     implementation("androidx.constraintlayout:constraintlayout:_")
 
+    // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:_")
     implementation("androidx.navigation:navigation-ui-ktx:_")
 
+    // Lifecycle
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:_")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:_")
+
+    // Testing
     testImplementation("junit:junit:_")
     androidTestImplementation("androidx.test.ext:junit:_")
     androidTestImplementation("androidx.test.espresso:espresso-core:_")
