@@ -12,5 +12,12 @@ data class NewPlayer(
     var selectedAIPosition: Int = -1
 ) {
     fun selectedAI(): AI? =
-        takeIf { isHuman.get() }?.let { AI.basicAI.getOrNull(selectedAIPosition) }
+        takeUnless { isHuman.get() }?.let { AI.basicAI.getOrNull(selectedAIPosition) }
+
+    fun toPlayer(): Player =
+        Player(
+            playerName = if (isHuman.get()) playerName else selectedAI()?.name ?: "AI",
+            isHuman = isHuman.get(),
+            selectedAI = selectedAI(),
+        )
 }
