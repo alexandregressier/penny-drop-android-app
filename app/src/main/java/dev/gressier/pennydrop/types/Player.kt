@@ -13,6 +13,9 @@ data class Player(
         pennies += count
     }
 
+    fun hasPenniesLeft(subtractPenny: Boolean = false): Boolean =
+        (pennies - subtractPenny.compareTo(false)) > 0
+
     var isRolling: Boolean = false
 
     companion object {
