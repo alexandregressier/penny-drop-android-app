@@ -8,4 +8,8 @@
         android:id="@+id/gameFragment"
         android:icon="@drawable/mdi_dice_6_black_24dp"
         android:title="@string/game" />
+    <item
+        android:id="@+id/rankingsFragment"
+        android:icon="@drawable/mdi_format_list_numbered_black_24dp"
+        android:title="@string/rankings" />
 </menu>
