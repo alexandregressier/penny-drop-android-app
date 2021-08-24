@@ -53,6 +53,11 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:_")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:_")
 
+    // Room
+    implementation("androidx.room:room-runtime:_")
+    implementation("androidx.room:room-ktx:_")
+    kapt("androidx.room:room-compiler:_")
+
     // Testing
     testImplementation("junit:junit:_")
     androidTestImplementation("androidx.test.ext:junit:_")

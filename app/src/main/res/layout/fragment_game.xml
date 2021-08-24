@@ -110,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
-            android:text="coin(s) left"
+            android:text="@string/coins_left"
             android:textSize="12sp"
             app:layout_constraintTop_toBottomOf="@id/textCurrentPlayerCoinsLeft"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -165,7 +165,7 @@
             android:layout_height="0dp"
             android:layout_margin="16dp"
             android:scrollbars="vertical"
-            android:text="@{vm.currentTurnText}"
+            android:text="@{vm.currentGame.game.currentTurnText}"
             app:layout_constraintTop_toBottomOf="@id/layoutButtons"
             app:layout_constraintBottom_toTopOf="@id/textCurrentStandingsInfo"
             app:layout_constraintStart_toStartOf="parent"
