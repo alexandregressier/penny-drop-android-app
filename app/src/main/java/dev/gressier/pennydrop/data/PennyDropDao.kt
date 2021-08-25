@@ -2,8 +2,7 @@ package dev.gressier.pennydrop.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import dev.gressier.pennydrop.data.GameState.CANCELLED
-import dev.gressier.pennydrop.data.GameState.STARTED
+import dev.gressier.pennydrop.data.GameState.*
 import dev.gressier.pennydrop.types.Player
 import java.time.OffsetDateTime
 
@@ -25,8 +24,20 @@ abstract class PennyDropDao {
             WHERE endTime IS NULL
             ORDER BY startTime DESC
             LIMIT 1)
-        ORDER BY gamePlayerNumber""")
+        ORDER BY gamePlayerNumber
+    """)
     abstract fun getCurrentGameStatuses(): LiveData<List<GameStatus>>
+
+    @Transaction
+    @Query("""
+        SELECT * FROM game_statuses gs
+        WHERE gs.gameId IN (
+            SELECT gameId FROM games
+            WHERE gameState = :finishedGameState)
+    """)
+    abstract fun getCompletedGameStatusesWithPlayers(
+        finishedGameState: GameState = FINISHED,
+    ): LiveData<List<GameStatusWithPlayer>>
 
     @Insert
     abstract suspend fun insertGame(game: Game): Long

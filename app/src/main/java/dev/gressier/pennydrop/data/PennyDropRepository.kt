@@ -11,6 +11,9 @@ class PennyDropRepository(private val pennyDropDao: PennyDropDao) {
     fun getCurrentGameStatuses(): LiveData<List<GameStatus>> =
         pennyDropDao.getCurrentGameStatuses()
 
+    fun getCompletedGameStatusesWithPlayers(): LiveData<List<GameStatusWithPlayer>> =
+        pennyDropDao.getCompletedGameStatusesWithPlayers()
+
     suspend fun startGame(players: List<Player>): Long =
         pennyDropDao.startGame(players)
 
