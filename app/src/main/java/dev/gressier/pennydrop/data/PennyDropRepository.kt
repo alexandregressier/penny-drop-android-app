@@ -14,11 +14,11 @@ class PennyDropRepository(private val pennyDropDao: PennyDropDao) {
     fun getCompletedGameStatusesWithPlayers(): LiveData<List<GameStatusWithPlayer>> =
         pennyDropDao.getCompletedGameStatusesWithPlayers()
 
-    suspend fun startGame(players: List<Player>): Long =
-        pennyDropDao.startGame(players)
+    suspend fun startGame(players: List<Player>, pennyCount: Int?): Long =
+        pennyDropDao.startGame(players, pennyCount)
 
-    suspend fun updateGameAndStatuses(game: Game, status: List<GameStatus>) =
-        pennyDropDao.updateGameAndStatuses(game, status)
+    suspend fun updateGameAndStatuses(game: Game, statuses: List<GameStatus>) =
+        pennyDropDao.updateGameAndStatuses(game, statuses)
 
     companion object {
         @Volatile private var instance: PennyDropRepository? = null

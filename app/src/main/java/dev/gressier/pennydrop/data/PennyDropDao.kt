@@ -67,7 +67,7 @@ abstract class PennyDropDao {
     )
 
     @Transaction
-    open suspend fun startGame(players: List<Player>): Long {
+    open suspend fun startGame(players: List<Player>, pennyCount: Int? = null): Long {
         closeOpenGames()
         val gameId = insertGame(
             Game(
@@ -79,14 +79,20 @@ abstract class PennyDropDao {
         insertGameStatuses(
             players
                 .map { getPlayer(it.playerName)?.playerId ?: insertPlayer(it) }
-                .mapIndexed { i, playerId -> GameStatus(gameId, playerId, i, i == 0) }
+                .mapIndexed { i, playerId -> GameStatus(
+                    gameId = gameId,
+                    playerId = playerId,
+                    gamePlayerNumber = i,
+                    isRolling = i == 0,
+                    pennies = pennyCount ?: Player.defaultPennyCount,
+                ) }
         )
         return gameId
     }
 
     @Transaction
-    open suspend fun updateGameAndStatuses(game: Game, status: List<GameStatus>) {
+    open suspend fun updateGameAndStatuses(game: Game, statuses: List<GameStatus>) {
         updateGame(game)
-        updateGameStatuses(status)
+        updateGameStatuses(statuses)
     }
 }

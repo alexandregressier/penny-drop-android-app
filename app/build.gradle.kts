@@ -62,6 +62,9 @@ dependencies {
     // RecyclerView
     implementation("androidx.recyclerview:recyclerview:_")
 
+    // Preference
+    implementation("androidx.preference:preference:_")
+
     // Testing
     testImplementation("junit:junit:_")
     androidTestImplementation("androidx.test.ext:junit:_")

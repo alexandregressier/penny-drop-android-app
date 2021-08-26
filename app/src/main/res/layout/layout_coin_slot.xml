@@ -2,9 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
-
        <variable
            name="slot"
            type="dev.gressier.pennydrop.types.Slot" />
@@ -23,8 +21,9 @@
             android:minWidth="36dp"
             android:minHeight="36dp"
             android:src="@drawable/mdi_coin_black_24dp"
-            android:tint="@{slot.lastRolled ? @color/colorPrimary : @android:color/black}"
+            android:tint="@color/coin_slot_color"
             app:isHidden="@{!slot.canBeFilled || !slot.isFilled}"
+            app:slotLastRolled="@{slot.lastRolled}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -33,7 +32,8 @@
             android:id="@+id/bottomViewCoinSlot"
             android:layout_width="0dp"
             android:layout_height="5dp"
-            android:background="@{slot.lastRolled ? @color/colorPrimary : @android:color/black}"
+            android:background="@color/coin_slot_color"
+            app:slotLastRolled="@{slot.lastRolled}"
             app:layout_constraintTop_toBottomOf="@id/coinImageCoinSlot"
             app:layout_constraintStart_toStartOf="@id/coinImageCoinSlot"
             app:layout_constraintEnd_toEndOf="@id/coinImageCoinSlot" />
@@ -43,8 +43,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text='@{slot.number + ""}'
-            android:textColor="@{slot.lastRolled ? @color/colorPrimary : @android:color/black}"
+            android:textColor="@color/coin_slot_color"
             android:textSize="24sp"
+            app:slotLastRolled="@{slot.lastRolled}"
             app:layout_constraintTop_toBottomOf="@id/bottomViewCoinSlot"
             app:layout_constraintStart_toStartOf="@id/coinImageCoinSlot"
             app:layout_constraintEnd_toEndOf="@id/coinImageCoinSlot"

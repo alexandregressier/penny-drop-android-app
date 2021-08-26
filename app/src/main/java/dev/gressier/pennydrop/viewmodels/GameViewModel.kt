@@ -2,6 +2,7 @@ package dev.gressier.pennydrop.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*
+import androidx.preference.PreferenceManager
 import dev.gressier.pennydrop.data.GameState.FINISHED
 import dev.gressier.pennydrop.data.GameState.STARTED
 import dev.gressier.pennydrop.data.GameStatus
@@ -21,6 +22,7 @@ import java.time.OffsetDateTime
 class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: PennyDropRepository
+    private val prefs = PreferenceManager.getDefaultSharedPreferences(application)
 
     val currentGame = MediatorLiveData<GameWithPlayers>()
 
@@ -72,7 +74,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     suspend fun startGame(playersForNewGame: List<Player>) {
-        repository.startGame(playersForNewGame)
+        repository.startGame(playersForNewGame, prefs?.getInt("pennyCount", Player.defaultPennyCount))
     }
 
     fun roll() {
@@ -189,7 +191,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
             }
 
     private suspend fun playAITurn() {
-        delay(1000)
+        delay(if (prefs.getBoolean("fastAI", false)) 100 else 1000)
         val game = currentGame.value?.game ?: return
         val players = currentGame.value?.players ?: return
         val currentPlayer = currentPlayer.value ?: return
