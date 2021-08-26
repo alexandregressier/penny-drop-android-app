@@ -22,7 +22,6 @@ abstract class PennyDropDatabase : RoomDatabase() {
     abstract fun pennyDropDao(): PennyDropDao
 
     companion object {
-
         @Volatile private var instance: PennyDropDatabase? = null
 
         fun getDatabase(context: Context, scope: CoroutineScope): PennyDropDatabase =

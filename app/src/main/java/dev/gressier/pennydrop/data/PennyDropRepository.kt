@@ -21,7 +21,6 @@ class PennyDropRepository(private val pennyDropDao: PennyDropDao) {
         pennyDropDao.updateGameAndStatuses(game, status)
 
     companion object {
-
         @Volatile private var instance: PennyDropRepository? = null
 
         fun getInstance(pennyDropDao: PennyDropDao) =
