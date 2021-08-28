@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.2.0")
+        classpath("com.android.tools.build:gradle:4.2.2")
         classpath(kotlin("gradle-plugin:1.5.10"))
     }
 }
@@ -21,5 +21,5 @@ tasks.register("clean", Delete::class) {
 }
 
 tasks.withType<Wrapper> {
-    gradleVersion = "${project.extra["versionGradle"]}"
+    gradleVersion = "${project.extra["version.gradle"]}"
 }
