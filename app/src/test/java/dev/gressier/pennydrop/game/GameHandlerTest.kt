@@ -11,17 +11,22 @@ class GameHandlerTest {
 
     @Test
     fun `Test nextPlayer() via pass() function`() {
-        val currentPlayer = testPlayers.first { it.playerName == "Sofiane" }
-        val nextPlayer = testPlayers.first { it.playerName == "Adrien" }
-        checkNextPlayer(currentPlayer, nextPlayer)
+        checkNextPlayer(
+            findPlayerBy(name = "Sofiane"),
+            findPlayerBy(name = "Adrien"),
+        )
     }
 
     @Test
     fun `Test last nextPlayer() via pass() function`() {
-        val currentPlayer = testPlayers.first { it.playerName == "Riverboat Ron" }
-        val nextPlayer = testPlayers.first { it.playerName == "Alex" }
-        checkNextPlayer(currentPlayer, nextPlayer)
+        checkNextPlayer(
+            findPlayerBy(name = "Riverboat Ron"),
+            findPlayerBy(name = "Alex"),
+        )
     }
+
+    private fun findPlayerBy(name: String): Player =
+        testPlayers.first { it.playerName == name }
 
     private fun checkNextPlayer(currentPlayer: Player, nextPlayer: Player) {
         GameHandler.pass(testPlayers, currentPlayer).also { result ->
