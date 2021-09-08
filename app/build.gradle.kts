@@ -69,4 +69,7 @@ dependencies {
     testImplementation("junit:junit:_")
 
     // Instrumented Testing
+    androidTestImplementation("androidx.test:runner:_")
+    androidTestImplementation("androidx.test:core:_") // ApplicationProvider
+    androidTestImplementation("androidx.arch.core:core-testing:_") // InstantTaskExecutorRule
 }
