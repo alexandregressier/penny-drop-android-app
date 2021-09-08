@@ -9,16 +9,27 @@ import org.junit.Test
 
 class GameHandlerTest {
 
-    @Test
-    fun `Test nextPlayer() via pass() function`() {
+    companion object {
+        private lateinit var testPlayers: List<Player>
+
+        @BeforeClass @JvmStatic fun initTestPlayers() {
+            testPlayers = listOf(
+                Player(playerName = "Alex"),
+                Player(playerName = "Sofiane"),
+                Player(playerName = "Adrien"),
+                Player(playerName = "Riverboat Ron", isHuman = false, selectedAI = AI.basicAI[5]),
+            )
+        }
+    }
+
+    @Test fun `Test nextPlayer() via pass() function`() {
         checkNextPlayer(
             findPlayerBy(name = "Sofiane"),
             findPlayerBy(name = "Adrien"),
         )
     }
 
-    @Test
-    fun `Test last nextPlayer() via pass() function`() {
+    @Test fun `Test last nextPlayer() via pass() function`() {
         checkNextPlayer(
             findPlayerBy(name = "Riverboat Ron"),
             findPlayerBy(name = "Alex"),
@@ -34,21 +45,6 @@ class GameHandlerTest {
             assertEquals(PASS, result.turnEnd)
             assertEquals(currentPlayer, result.previousPlayer)
             assertEquals(nextPlayer, result.currentPlayer)
-        }
-    }
-
-    companion object {
-        private lateinit var testPlayers: List<Player>
-
-        @BeforeClass
-        @JvmStatic
-        fun setUpTestPlayers() {
-            testPlayers = listOf(
-                Player(playerName = "Alex"),
-                Player(playerName = "Sofiane"),
-                Player(playerName = "Adrien"),
-                Player(playerName = "Riverboat Ron", isHuman = false, selectedAI = AI.basicAI[5]),
-            )
         }
     }
 }
