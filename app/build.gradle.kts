@@ -72,4 +72,6 @@ dependencies {
     androidTestImplementation("androidx.test:runner:_")
     androidTestImplementation("androidx.test:core:_") // ApplicationProvider
     androidTestImplementation("androidx.arch.core:core-testing:_") // InstantTaskExecutorRule
+    androidTestImplementation("androidx.test.espresso:espresso-core:_")
+    androidTestImplementation("androidx.test.ext:junit-ktx:_") // activityScenarioRule
 }
