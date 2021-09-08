@@ -65,12 +65,8 @@ dependencies {
     // Preference
     implementation("androidx.preference:preference:_")
 
-    // Testing
+    // Local Testing
     testImplementation("junit:junit:_")
-    testImplementation("androidx.test:core:_")
-    testImplementation("androidx.test.ext:junit-ktx:_")
-    testImplementation("androidx.arch.core:core-testing:_")
 
-    androidTestImplementation("androidx.test.ext:junit:_")
-    androidTestImplementation("androidx.test.espresso:espresso-core:_")
+    // Instrumented Testing
 }
