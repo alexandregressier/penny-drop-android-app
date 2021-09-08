@@ -33,6 +33,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    packagingOptions {
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
+    }
 }
 
 dependencies {
@@ -74,4 +78,5 @@ dependencies {
     androidTestImplementation("androidx.arch.core:core-testing:_") // InstantTaskExecutorRule
     androidTestImplementation("androidx.test.espresso:espresso-core:_")
     androidTestImplementation("androidx.test.ext:junit-ktx:_") // activityScenarioRule
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:_") // runBlockingTest
 }
