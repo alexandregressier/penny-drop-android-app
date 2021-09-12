@@ -20,6 +20,6 @@ tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
 
-tasks.withType<Wrapper> {
+tasks.wrapper {
     gradleVersion = "${project.extra["version.gradle"]}"
 }
