@@ -2,7 +2,7 @@ plugins {
     id("de.fayard.refreshVersions") version "0.21.0"
 }
 
-rootProject.name = "Penny Drop"
+rootProject.name = "penny-drop"
 include(
     ":app",
 )
