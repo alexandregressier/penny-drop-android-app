@@ -60,7 +60,7 @@ dependencies {
     // Room
     implementation("androidx.room:room-runtime:_")
     implementation("androidx.room:room-ktx:_")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0") // why?
     kapt("androidx.room:room-compiler:_")
 
     // RecyclerView
